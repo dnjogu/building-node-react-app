@@ -2,13 +2,14 @@
 pipeline {
     agent { node { label 'master' } }
     environment {
-        CI = 'true'
+        load "environmentVariables.groovy"
     }
 
     stages {
         stage("Checkout") {
             steps {
-                git(url: 'file:///Users/munene/git/simple-node-js-react-npm-app/.git', branch: 'master', poll: true)
+
+                git(url: 'env.DEV_SCM_REPOSITORY', branch: 'env.DEV_SCM_BRANCH', poll: true)
             }
         }
 
@@ -32,8 +33,27 @@ pipeline {
                 sh './jenkins/scripts/kill.sh'
             }
         }
+
     }
 
+    post {
+        always {
+            echo 'One way or another, I have finished'
+            deleteDir() /* clean up our workspace */
+        }
+        success {
+            echo 'I succeeeded!'
+        }
+        unstable {
+            echo 'I am unstable :/'
+        }
+        failure {
+            echo 'I failed :('
+        }
+        changed {
+            echo 'Things were different before...'
+        }
+    }
 }
 
 		
