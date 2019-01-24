@@ -1,8 +1,9 @@
 #!/usr/bin/env groovy
 pipeline {
-    agent { node { label 'master' } }
+    agent { node { label 'master' }
+    load "environmentVariables.groovy" }
     environment {
-        load "environmentVariables.groovy"
+
     }
 
     stages {
