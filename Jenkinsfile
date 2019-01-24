@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 pipeline {
     agent { node { label 'master' }
-    load "environmentVariables.groovy" }
+     }
     environment {
 
     }
@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage("Checkout") {
             steps {
-
+                load "environmentVariables.groovy"
                 git(url: 'env.DEV_SCM_REPOSITORY', branch: 'env.DEV_SCM_BRANCH', poll: true)
             }
         }
