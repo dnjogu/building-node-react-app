@@ -3,7 +3,7 @@ pipeline {
     agent { node { label 'master' }
      }
     environment {
-
+        CI = 'true'
     }
 
     stages {
