@@ -12,7 +12,7 @@ pipeline {
                 load "environmentVariables.groovy"
                 echo "${env.DEV_SCM_REPOSITORY}"
                 echo "${env.DEV_SCM_BRANCH}"
-                git(url: ${env.DEV_SCM_REPOSITORY}, branch: ${env.DEV_SCM_BRANCH}, poll: true)
+                git(url: "${env.DEV_SCM_REPOSITORY}", branch: "${env.DEV_SCM_BRANCH}", poll: true)
             }
         }
 
