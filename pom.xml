@@ -17,9 +17,28 @@
         <artifactId>sonar-maven-plugin</artifactId>
         <version>3.6.0.1398</version>
       </plugin>
+      <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <executions>
+                <execution>
+                    <id>exec-npm-install</id>
+                    <phase>generate-sources</phase>
+                    <configuration>
+                        <workingDirectory>${project.basedir}/src</workingDirectory>
+                        <executable>npm</executable>
+                        <arguments>
+                            <argument>install</argument>
+                        </arguments>
+                    </configuration>
+                    <goals>
+                        <goal>exec</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
     </plugins>
   </pluginManagement>
-
 	</build>
 	
 </project>
