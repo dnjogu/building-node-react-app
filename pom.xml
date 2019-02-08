@@ -30,7 +30,7 @@
                 </execution>
             </executions>
             <configuration>
-                        <workingDirectory>${project.basedir}/src</workingDirectory>
+                        <workingDirectory>${project.basedir}</workingDirectory>
                         <executable>npm</executable>
                         <arguments>
                             <argument>install</argument>
