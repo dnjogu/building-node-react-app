@@ -35,6 +35,22 @@ pipeline {
     		
   			}
   			
+  			stage("SonarQube Analysis") {
+        steps {
+        		//Defines your NodeJS environment and Tells Sonar where to run the code. Available under Manage Jenkins > Global tool Configuration
+            nodejs(nodeJSInstallationName: 'NodeJSAuto', configId: '') {
+                // sonar script moet je in een nodejs module draaien !!
+                script {
+                    withSonarQubeEnv('SonarQubeDev') {
+                    def scannerHome = tool 'sonarScanner';
+                    sh "${scannerHome}/bin/sonar-scanner"
+                }
+            }
+            }
+        }
+    }
+
+  			
 		
         stage("Quality Gate") {
             steps {
