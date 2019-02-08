@@ -26,20 +26,21 @@ pipeline {
             }
 		}
 		
-		stage("SonarQube analysis") {
-			steps {
-				withSonarQubeEnv('SonarQubeDev') {
-      			sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar'
-    			}
-    			}
+		//stage("SonarQube analysis") {
+			//steps {
+				//withSonarQubeEnv('SonarQubeDev') {
+      			//sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar'
+    			//}
+    			//}
     		
-  			}
+  			//}
   			
   			stage("SonarQube Analysis") {
         steps {
         		//Defines your NodeJS environment and Tells Sonar where to run the code. Available under Manage Jenkins > Global tool Configuration
-            nodejs(nodeJSInstallationName: 'NodeJSAuto', configId: '') {
-                // sonar script moet je in een nodejs module draaien !!
+        		//NodeJS plugin required to configure this
+            nodejs(nodeJSInstallationName: 'NodeJSLocal', configId: '') {
+                // sonar script to run in a NodeJS Module
                 script {
                     withSonarQubeEnv('SonarQubeDev') {
                     def scannerHome = tool 'sonarScanner';
