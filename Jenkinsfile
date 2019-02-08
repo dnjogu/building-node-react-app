@@ -4,6 +4,8 @@ pipeline {
      }
     environment {
         CI = 'true'
+        JENKINS_CRUMB = 'curl user username:password "<jenkins-url>/crumbIssuer/api/xml?xpath=concat(//crumbRequestField, \":\",//crumb)"'
+
     }
 
     stages {
@@ -22,6 +24,27 @@ pipeline {
                 sh 'npm install'
             }
 		}
+		
+		stage("SonarQube analysis") {
+			steps {
+				withSonarQubeEnv('SonarQubeDev') {
+      			sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
+    			}
+    			}
+    		
+  			}
+  			
+		
+        stage("Quality Gate") {
+            steps {
+                timeout(time: 1, unit: 'HOURS') {
+                    // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
+                    // true = set pipeline to UNSTABLE, false = don't
+                    // Requires SonarQube Scanner for Jenkins 2.7+
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        }
 
          stage('Test') {
             steps {
