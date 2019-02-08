@@ -21,7 +21,8 @@ pipeline {
         stage("Build") {
         steps {
                 echo "Building.."
-                sh 'npm install'
+                sh 'mvn org.codehaus.mojo:exec-maven-plugin:generate-sources'
+               // sh 'npm install'
             }
 		}
 		
