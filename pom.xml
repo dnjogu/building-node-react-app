@@ -6,6 +6,7 @@
 	<packaging>ear</packaging>
 	<groupId>simple-node-js-react-npm-app</groupId>
 	<artifactId>simple-node-js-react-npm-app</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 	
 	<!-- Additional lines to be added here... -->
 	<build>
