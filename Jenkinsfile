@@ -21,8 +21,8 @@ pipeline {
         stage("Build") {
         steps {
                 echo "Building.."
-                sh 'mvn org.codehaus.mojo:exec-maven-plugin:exec'
-               // sh 'npm install'
+                //sh 'mvn org.codehaus.mojo:exec-maven-plugin:exec'
+               sh 'npm install'
             }
 		}
 		
@@ -36,7 +36,7 @@ pipeline {
   			//}
   			
   			stage("SonarQube Analysis") {
-        steps {
+        		steps {
         		//Defines your NodeJS environment and Tells Sonar where to run the code. Available under Manage Jenkins > Global tool Configuration
         		//NodeJS plugin required to configure this
             nodejs(nodeJSInstallationName: 'NodeJSLocal', configId: '') {
