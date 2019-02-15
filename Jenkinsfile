@@ -26,16 +26,25 @@ pipeline {
             }
 		}
 		
-		//stage("SonarQube analysis") {
-			//steps {
-				//withSonarQubeEnv('SonarQubeDev') {
-      			//sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar'
-    			//}
-    			//}
+		stage("SonarQube analysis") {
+			steps {
+				withSonarQubeEnv('SonarQubeDev') {
+      			sh 'npm run sonar-scanner'
+    			}
+    			}
+    			}
+		
+		
+		/*stage("SonarQube analysis") {
+			steps {
+				withSonarQubeEnv('SonarQubeDev') {
+      			sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar'
+    			}
+    			}
     		
-  			//}
+  			}*/
   			
-  			stage("SonarQube Analysis") {
+  			/*stage("SonarQube Analysis") {
         		steps {
         		//Defines your NodeJS environment and Tells Sonar where to run the code. Available under Manage Jenkins > Global tool Configuration
         		//NodeJS plugin required to configure this
@@ -44,12 +53,12 @@ pipeline {
                 script {
                     withSonarQubeEnv('SonarQubeDev') {
                     def scannerHome = tool 'sonarScanner';
-                    sh "${scannerHome}/bin/sonar-scanner"
+                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.login=[my analysis token]"
                 }
             }
             }
         }
-    }	
+    }*/	
 		
         stage("Quality Gate") {
             steps {
