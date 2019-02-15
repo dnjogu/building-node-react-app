@@ -11,6 +11,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "sonar-scanner": "node_modules/sonar-scanner/bin/sonar-scanner",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "sonar-scanner": "^3.1.0"
   }
 }
