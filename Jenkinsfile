@@ -87,7 +87,8 @@ pipeline {
         stage('Pack artefacts'){
             steps {
             	sh 'npm pack'
-                sh (returnStdout:true, script:'.trim()') 
+            	stdout = sh (returnStdout:true) 
+            	stdout.trim()
                 
             }
         }
