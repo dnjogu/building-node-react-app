@@ -112,7 +112,7 @@ pipeline {
 						    artifacts: [
 						        [artifactId: projectName,
 						         classifier: '',
-						         file: projectName + version + '.tgz',
+						         file: projectName +"-"+ version + '.tgz',
 						         type: 'tgz']
 						    			]
  									)
