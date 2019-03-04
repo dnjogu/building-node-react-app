@@ -91,7 +91,7 @@ pipeline {
         stage('Pack artefacts'){
             steps {
             script {
-                def npmPack = sh(returnStdout:true, script:'npm pack').trim()
+                def npmPack = sh(returnStdout:true, script:'npm pack jenkins/, public/, src/ ').trim()
             	sh "echo ${npmPack}"
             }   
             }
