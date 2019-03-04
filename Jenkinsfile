@@ -7,7 +7,7 @@ pipeline {
     environment {
         CI = 'true'
         JENKINS_CRUMB = 'curl user username:password "<jenkins-url>/crumbIssuer/api/xml?xpath=concat(//crumbRequestField, \":\",//crumb)"'
-
+		projectName = currentBuild.projectName
     }
     stages {
         stage("Checkout") {
@@ -125,7 +125,7 @@ pipeline {
         
         failure {
              //mail to: 'someone@somewhere.com' , subject: "Status of pipeline: ${currentBuild.fullDisplayName}" , body: "${env.BUILD_URL} has result ${currentBuild.result}"
-        	echo '"${currentBuild.projectName} has failed at ${env.BUILD_URL}"'
+        	echo "${currentBuild.projectName} has failed at ${env.BUILD_URL}"
         }
        
     }
