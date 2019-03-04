@@ -1,7 +1,8 @@
 #!/usr/bin/env groovy
 pipeline {
-    agent { node { label 'master' }
+    agent { 
     timestamps()
+    node { label 'master' }
      }
     environment {
         CI = 'true'
