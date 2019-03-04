@@ -1,5 +1,6 @@
 #!/usr/bin/env groovy
 def projectName = currentBuild.projectName
+def version = "0.1.0"
 pipeline {
     agent { 
     node { label 'master' }
@@ -105,13 +106,13 @@ pipeline {
 						    protocol: 'http',
 						    nexusUrl: 'localhost:8081',
 						    groupId: 'com.example',
-						    version: '0.1.0',
+						    version: version,
 						    repository: 'DynamicsDeveloperReleases',
 						    credentialsId: 'jenkins-nexus-authentication',
 						    artifacts: [
 						        [artifactId: projectName,
 						         classifier: '',
-						         file: 'my-service-' + version + '.tgz',
+						         file: projectName + version + '.tgz',
 						         type: 'tgz']
 						    			]
  									)
