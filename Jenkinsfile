@@ -10,7 +10,6 @@ pipeline {
 
     }
     stages {
-    timestamps()
         stage("Checkout") {
             steps {
                 load "environmentVariables.groovy"
