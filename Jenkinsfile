@@ -123,7 +123,8 @@ pipeline {
     post {
         always {
           cleanWs() 
-          echo "env.BUILD_TAG" 
+          echo "${env.BUILD_TAG}"
+ 
         }
         
         failure {
