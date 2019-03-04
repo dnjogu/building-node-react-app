@@ -1,13 +1,16 @@
 #!/usr/bin/env groovy
 pipeline {
     agent { 
-    node { label 'master' }
+    node { 
+    label 'master' 
+    def projectName = currentBuild.projectName
+    }
      }
      
     environment {
         CI = 'true'
         JENKINS_CRUMB = 'curl user username:password "<jenkins-url>/crumbIssuer/api/xml?xpath=concat(//crumbRequestField, \":\",//crumb)"'
-		projectName = currentBuild.projectName
+		
     }
     stages {
         stage("Checkout") {
