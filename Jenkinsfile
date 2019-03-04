@@ -102,7 +102,7 @@ pipeline {
 						    protocol: 'http',
 						    nexusUrl: 'localhost:8081',
 						    groupId: 'com.example',
-						    version: version,
+						    version: '0.1.0',
 						    repository: 'DynamicsDeveloperReleases',
 						    credentialsId: 'jenkins-nexus-authentication',
 						    artifacts: [
@@ -123,7 +123,7 @@ pipeline {
         
         failure {
              //mail to: 'someone@somewhere.com' , subject: "Status of pipeline: ${currentBuild.fullDisplayName}" , body: "${env.BUILD_URL} has result ${currentBuild.result}"
-        	echo '${currentBuild.fullDisplayName} has failed at ${env.BUILD_URL}'
+        	echo '"${currentBuild.fullDisplayName} has failed at ${env.BUILD_URL}"'
         }
        
     }
