@@ -1,9 +1,9 @@
 #!/usr/bin/env groovy
 pipeline {
     agent { 
-    timestamps()
     node { label 'master' }
      }
+     timestamps()
     environment {
         CI = 'true'
         JENKINS_CRUMB = 'curl user username:password "<jenkins-url>/crumbIssuer/api/xml?xpath=concat(//crumbRequestField, \":\",//crumb)"'
