@@ -86,8 +86,8 @@ pipeline {
         
         stage('Pack artefacts'){
             steps {
-                sh 'npm pack'
-                sh "node -p require('./package.json').version"
+            	sh 'npm pack'
+                sh (returnStdout:true, script:'.trim()') 
                 
             }
         }
