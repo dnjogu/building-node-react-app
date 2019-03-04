@@ -118,7 +118,7 @@ pipeline {
 
     post {
         always {
-            
+          cleanWs()  
         }
         
         failure {
