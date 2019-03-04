@@ -3,13 +3,14 @@ pipeline {
     agent { 
     node { label 'master' }
      }
-     timestamps()
+     
     environment {
         CI = 'true'
         JENKINS_CRUMB = 'curl user username:password "<jenkins-url>/crumbIssuer/api/xml?xpath=concat(//crumbRequestField, \":\",//crumb)"'
 
     }
     stages {
+    timestamps()
         stage("Checkout") {
             steps {
                 load "environmentVariables.groovy"
