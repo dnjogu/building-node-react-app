@@ -89,7 +89,7 @@ pipeline {
             	sh 'npm pack'
             	stdout = sh (returnStdout:true)
             	script  {
-            	 stdout.trim()   
+            	 sh stdout.trim()   
             	}
  
             	
