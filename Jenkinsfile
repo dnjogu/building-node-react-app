@@ -1,10 +1,8 @@
 #!/usr/bin/env groovy
+def projectName = currentBuild.projectName
 pipeline {
     agent { 
-    node { 
-    label 'master' 
-    def projectName = currentBuild.projectName
-    }
+    node { label 'master' }
      }
      
     environment {
