@@ -128,6 +128,7 @@ pipeline {
         failure {
              //mail to: 'someone@somewhere.com' , subject: "Status of pipeline: ${currentBuild.fullDisplayName}" , body: "${env.BUILD_URL} has result ${currentBuild.result}"
         	echo "${currentBuild.projectName} has failed at ${env.BUILD_URL}"
+        	echo "env.BUILD_TAG"
         }
        
     }
