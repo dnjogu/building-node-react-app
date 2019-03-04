@@ -87,10 +87,9 @@ pipeline {
         stage('Pack artefacts'){
             steps {
                 sh 'npm pack'
+                sh "node -p "require('./package.json').version""
                 
             }
-
-            
         }
 
         
@@ -123,7 +122,7 @@ pipeline {
         
         failure {
              //mail to: 'someone@somewhere.com' , subject: "Status of pipeline: ${currentBuild.fullDisplayName}" , body: "${env.BUILD_URL} has result ${currentBuild.result}"
-        	echo '"${currentBuild.fullDisplayName} has failed at ${env.BUILD_URL}"'
+        	echo '"${currentBuild.projectName} has failed at ${env.BUILD_URL}"'
         }
        
     }
