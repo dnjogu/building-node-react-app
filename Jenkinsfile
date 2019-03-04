@@ -100,16 +100,16 @@ pipeline {
                       nexusArtifactUploader(
 						    nexusVersion: 'nexus3',
 						    protocol: 'http',
-						    nexusUrl: 'my.nexus.address',
+						    nexusUrl: 'localhost:8081',
 						    groupId: 'com.example',
 						    version: version,
-						    repository: 'RepositoryName',
-						    credentialsId: 'CredentialsId',
+						    repository: 'DynamicsDeveloperReleases',
+						    credentialsId: 'jenkins-nexus-authentication',
 						    artifacts: [
 						        [artifactId: projectName,
 						         classifier: '',
-						         file: 'my-service-' + version + '.jar',
-						         type: 'jar']
+						         file: 'my-service-' + version + '.tgz',
+						         type: 'tgz']
 						    			]
  									)
                                           }
@@ -122,7 +122,8 @@ pipeline {
         }
         
         failure {
-             mail to: 'someone@somewhere.com' , subject: "Status of pipeline: ${currentBuild.fullDisplayName}" , body: "${env.BUILD_URL} has result ${currentBuild.result}"
+             //mail to: 'someone@somewhere.com' , subject: "Status of pipeline: ${currentBuild.fullDisplayName}" , body: "${env.BUILD_URL} has result ${currentBuild.result}"
+        	echo '${currentBuild.fullDisplayName} has failed at ${env.BUILD_URL}'
         }
        
     }
