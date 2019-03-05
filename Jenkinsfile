@@ -125,7 +125,7 @@ pipeline {
         always {
           cleanWs() 
           echo "${projectName}"
-          echo "${env.BUILD_TAG}"
+          echo "${buildTag}"
  
         }
         
