@@ -1,6 +1,7 @@
 #!/usr/bin/env groovy
 def projectName = currentBuild.projectName
-def version = "0.1.0"
+def version = env.BUILD_NUMBER
+def buildTag = env.BUILD_TAG
 pipeline {
     agent { 
     node { label 'master' }
@@ -123,6 +124,7 @@ pipeline {
     post {
         always {
           cleanWs() 
+          echo "${projectName}"
           echo "${env.BUILD_TAG}"
  
         }
