@@ -93,6 +93,7 @@ pipeline {
             steps {
             script {
                 def npmPack = sh(returnStdout:true, script:'npm pack').trim()
+                env.npmPack = npmPack
             	sh "echo ${npmPack}"
             }   
             }
