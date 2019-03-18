@@ -114,7 +114,7 @@ pipeline {
 						    artifacts: [
 						        [artifactId: projectName,
 						         classifier: '',
-						         file: projectName +"-"+ version + '.tgz',
+						         file: ${env.npmPack},
 						         type: 'tgz']
 						    			]
  									)
