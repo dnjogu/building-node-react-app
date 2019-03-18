@@ -2,7 +2,7 @@
 def projectName = currentBuild.projectName
 def version = env.BUILD_NUMBER
 def buildTag = env.BUILD_TAG
-def fileName - env.npmPack
+def fileName = env.npmPack
 pipeline {
     agent { 
     node { label 'master' }
