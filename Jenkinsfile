@@ -130,9 +130,9 @@ pipeline {
         }
         
         success{
-            withCredentials(){
+            
                 sh 'git commit "package.json" -m'
-            }
+            
 
         }
 
